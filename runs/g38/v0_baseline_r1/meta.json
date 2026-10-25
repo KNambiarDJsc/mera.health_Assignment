@@ -1,0 +1,41 @@
+{
+  "extractor": "experiments\\v0_baseline.py",
+  "model": "gemini-3.8-flash",
+  "reports": {
+    "report_01": {
+      "errors": [
+        "RuntimeError: Gemini HTTP 503; check API access, model and quota. See README.md."
+      ],
+      "latency_s": 116.83,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 911,
+          "totalTokenCount": 3226,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 1073,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_02": {
+      "errors": [
+        "TimeoutError: The read operation timed out",
+        "TimeoutError: The read operation timed out",
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md.",
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md.",
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md.",
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md."
+      ]
+    }
+  }
+}

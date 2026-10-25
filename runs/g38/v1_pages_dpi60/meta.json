@@ -1,0 +1,62 @@
+{
+  "extractor": "experiments\\v1_pages_dpi.py",
+  "model": "gemini-3.8-flash",
+  "reports": {
+    "report_01": {
+      "errors": [],
+      "latency_s": 115.82,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 925,
+          "totalTokenCount": 3115,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            }
+          ],
+          "thoughtsTokenCount": 948,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_02": {
+      "errors": [],
+      "latency_s": 134.53,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 1017,
+          "totalTokenCount": 3750,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            }
+          ],
+          "thoughtsTokenCount": 1491,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_03": {
+      "errors": [
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "HTTPError: HTTP Error 429: Too Many Requests"
+      ]
+    }
+  }
+}

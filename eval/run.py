@@ -5,7 +5,8 @@
 Imports the extractor in-process and calls its extract(path), so the extractor's
 code path is unchanged. Token usage is captured by teeing urllib responses
 (both baseline and final call Gemini through urllib.request.urlopen).
-Errors are retried up to 6 times with backoff and every failed attempt is recorded.
+5xx/timeouts are retried up to 3 times and every failed attempt is recorded; a 429
+stops the run. Reports already saved in <out_dir> are skipped, so runs resume.
 """
 import importlib.util
 import io
@@ -55,19 +56,25 @@ def main():
     meta.update({"extractor": str(extractor), "model": getattr(module, "MODEL", None)})
     meta.setdefault("reports", {})
     for report in reports:
+        if (out / f"{report.stem}.json").exists():       # resumable across daily-quota resets
+            continue
         record = {"errors": []}
-        for attempt in range(6):
+        for attempt in range(3):
             _usage.clear()
             start = time.perf_counter()
             try:
                 result = module.extract(report)
-            except Exception as error:  # record and retry; the extractor itself may not retry
+            except Exception as error:  # record and retry 5xx/timeouts; the baseline itself never retries
                 record["errors"].append(f"{type(error).__name__}: {error}")
-                time.sleep(min(10 * 2 ** attempt, 120))
+                if "429" in str(error):                  # free-tier daily cap: retrying only burns requests
+                    meta["reports"][report.stem] = record
+                    (out / "meta.json").write_text(json.dumps(meta, indent=2))
+                    sys.exit(f"{report.stem}: quota exhausted (429); stopping run")
+                time.sleep(30 * (attempt + 1))
                 continue
             record["latency_s"] = round(time.perf_counter() - start, 2)
             record["usage"] = list(_usage)
-            (out / f"{report.stem}.json").write_text(json.dumps(result, indent=2, ensure_ascii=False))
+            (out / f"{report.stem}.json").write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
             break
         meta["reports"][report.stem] = record
         print(report.stem, record.get("latency_s"), len(result["tests"]) if "latency_s" in record else "FAILED",

@@ -1,0 +1,41 @@
+{
+  "extractor": "experiments\\v1_pages_dpi.py",
+  "model": "gemini-3.8-flash",
+  "reports": {
+    "report_01": {
+      "errors": [
+        "HTTPError: HTTP Error 503: Service Unavailable"
+      ],
+      "latency_s": 121.66,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 721,
+          "totalTokenCount": 2780,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            }
+          ],
+          "thoughtsTokenCount": 817,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_02": {
+      "errors": [
+        "HTTPError: HTTP Error 503: Service Unavailable",
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "HTTPError: HTTP Error 429: Too Many Requests"
+      ]
+    }
+  }
+}

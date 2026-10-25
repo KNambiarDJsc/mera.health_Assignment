@@ -8,7 +8,9 @@ then checked field by field. Missing gold rows and unmatched predictions are
 counted, not hidden.
 
 --corrected applies eval/gold_corrections.json (documented label errors) as a
-sensitivity check. Official numbers are always the uncorrected ones.
+sensitivity check. --lenient also matches names whose tokens are a subset of the
+other's, to show how much of a difference is only renaming. Official numbers are
+always strict + uncorrected.
 """
 import json
 import math
@@ -90,8 +92,11 @@ def _tokens_match(a: str, b: str) -> bool:
     return True
 
 
-def name_tier(pred: str, gold: str) -> int:
-    """3 exact, 2 a parenthetical/outer variant equal, 1 token-fuzzy, 0 no match."""
+LENIENT = False   # --lenient: sensitivity only, also accepts "Triglycerides" for "Serum Triglycerides"
+
+
+def name_tier(pred: str, gold: str) -> float:
+    """3 exact, 2 a parenthetical/outer variant equal, 1 token-fuzzy, 0.5 token subset (lenient only), 0 none."""
     if _clean(pred) == _clean(gold):
         return 3
     pv, gv = name_variants(pred), name_variants(gold)
@@ -99,6 +104,8 @@ def name_tier(pred: str, gold: str) -> int:
         return 2
     if any(_tokens_match(a, b) for a in pv for b in gv):
         return 1
+    if LENIENT and any(set(a.split()) < set(b.split()) or set(b.split()) < set(a.split()) for a in pv for b in gv):
+        return 0.5
     return 0
 
 
@@ -195,23 +202,53 @@ def score_run(run: Path, gold: dict) -> dict:
             "errors": {k: v["errors"] for k, v in per.items()}, "unlabelled_row_counts": unlabelled}
 
 
+PRICE_IN, PRICE_OUT = 0.75, 3.75   # USD / 1M tokens, gemini-3.8-flash paid tier (ai.google.dev/pricing, to 2026-12-31)
+
+
+def cost_latency(run: Path) -> dict:
+    """From run meta.json: tokens of the successful attempt, priced at paid-tier rates (actual spend: $0, free tier)."""
+    meta_path = run / "meta.json"
+    if not meta_path.exists():
+        return {}
+    records = [r for r in json.loads(meta_path.read_text())["reports"].values() if "latency_s" in r]
+    lat = sorted(r["latency_s"] for r in records)
+    tin = [sum(u.get("promptTokenCount", 0) for u in r["usage"]) for r in records]
+    tout = [sum(u.get("candidatesTokenCount", 0) + u.get("thoughtsTokenCount", 0) for u in r["usage"]) for r in records]
+    cost = [(i * PRICE_IN + o * PRICE_OUT) / 1e6 for i, o in zip(tin, tout)]
+    return {"reports_ok": len(records), "failed_attempts": sum(len(r["errors"]) for r in
+                                                               json.loads(meta_path.read_text())["reports"].values()),
+            "latency_p50_s": lat[len(lat) // 2], "latency_max_s": lat[-1],
+            "tokens_in_mean": round(sum(tin) / len(tin)), "tokens_out_mean": round(sum(tout) / len(tout)),
+            "usd_per_report": round(sum(cost) / len(cost), 5)}
+
+
 def fmt(x):
     return f"{x:.3f}" if isinstance(x, float) else str(x)
 
 
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    corrected, show_errors = "--corrected" in sys.argv, "--errors" in sys.argv
+    global LENIENT
+    corrected, show_errors, LENIENT = "--corrected" in sys.argv, "--errors" in sys.argv, "--lenient" in sys.argv
     gold = load_gold(corrected)
     cols = ["value_acc", "row_acc", "recall", "precision", "wrong_values", "decimal_errors", "null_values",
             "missing_rows", "extra_rows", "fabricated_ranges", "unit_acc_matched", "range_acc_matched"]
-    print(f"gold: {'CORRECTED (sensitivity)' if corrected else 'official'}\n")
+    mode = "_".join(m for m, on in (("corrected", corrected), ("lenient", LENIENT)) if on)
+    print(f"gold: {'CORRECTED (sensitivity)' if corrected else 'official'}; "
+          f"name matching: {'LENIENT (sensitivity)' if LENIENT else 'strict'}\n")
     print("| run | " + " | ".join(cols) + " |\n|" + "---|" * (len(cols) + 1))
     results = {}
     for run in map(Path, args):
         results[run] = res = score_run(run, gold)
-        print(f"| {run.name} | " + " | ".join(fmt(res['overall'][k]) for k in cols) + " |")
-        (run / ("score_corrected.json" if corrected else "score.json")).write_text(json.dumps(res, indent=2, ensure_ascii=False))
+        print(f"| {run.parent.name}/{run.name} | " + " | ".join(fmt(res['overall'][k]) for k in cols) + " |")
+        res["cost_latency"] = cost_latency(run)
+        (run / f"score{'_' + mode if mode else ''}.json").write_text(json.dumps(res, indent=2, ensure_ascii=False),
+                                                                    encoding="utf-8")
+    ccols = ["reports_ok", "failed_attempts", "latency_p50_s", "latency_max_s", "tokens_in_mean", "tokens_out_mean",
+             "usd_per_report"]
+    print("\n| run | " + " | ".join(ccols) + " |\n|" + "---|" * (len(ccols) + 1))
+    for run, res in results.items():
+        print(f"| {run.parent.name}/{run.name} | " + " | ".join(fmt(res["cost_latency"].get(k, "")) for k in ccols) + " |")
     for run, res in results.items():
         print(f"\n{run.name} per report: value_acc / wrong / missing / extra / fab_ranges")
         for stem, s in res["per_report"].items():

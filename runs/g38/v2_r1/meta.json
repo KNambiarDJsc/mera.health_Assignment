@@ -1,0 +1,85 @@
+{
+  "extractor": "extract.py",
+  "model": "gemini-3.8-flash",
+  "reports": {
+    "report_01": {
+      "errors": [],
+      "latency_s": 165.53,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 456,
+          "totalTokenCount": 2467,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 614,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_02": {
+      "errors": [],
+      "latency_s": 20.09,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 517,
+          "totalTokenCount": 2775,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            }
+          ],
+          "thoughtsTokenCount": 861,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_03": {
+      "errors": [],
+      "latency_s": 19.49,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 250,
+          "totalTokenCount": 2380,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            }
+          ],
+          "thoughtsTokenCount": 733,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_04": {
+      "errors": [
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md.",
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md.",
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md.",
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md.",
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md.",
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md."
+      ]
+    }
+  }
+}
