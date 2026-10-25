@@ -1,0 +1,11 @@
+{
+  "extractor": "extract.py",
+  "model": "gemini-3.5-flash",
+  "reports": {
+    "report_01": {
+      "errors": [
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md."
+      ]
+    }
+  }
+}

@@ -186,23 +186,46 @@ def summarise(c: dict) -> dict:
 
 
 def score_run(run: Path, gold: dict) -> dict:
-    per, total = {}, None
+    """A report with an output is scored; one with recorded failed attempts scores as empty (a failure);
+    one never attempted (subset runs) is left out and listed in not_run."""
+    attempted = json.loads((run / "meta.json").read_text())["reports"] if (run / "meta.json").exists() else {}
+    per, total, not_run = {}, None, []
     for stem, golds in gold.items():
         path = run / f"{stem}.json"
+        if not path.exists() and stem not in attempted:
+            not_run.append(stem)
+            continue
         preds = json.loads(path.read_text(encoding="utf-8"))["tests"] if path.exists() else []
         per[stem] = score_report(preds, golds)
         per[stem]["failed"] = not path.exists()
         total = per[stem]["counts"].copy() if total is None else {k: total[k] + v for k, v in per[stem]["counts"].items()}
-    unlabelled = {}
-    for path in sorted(run.glob("report_*.json")):
-        if path.stem not in gold:
-            unlabelled[path.stem] = len(json.loads(path.read_text(encoding="utf-8"))["tests"])
     return {"overall": summarise(total), "per_report": {k: summarise(v["counts"]) | {"failed": v["failed"]}
                                                         for k, v in per.items()},
-            "errors": {k: v["errors"] for k, v in per.items()}, "unlabelled_row_counts": unlabelled}
+            "errors": {k: v["errors"] for k, v in per.items()}, "unlabelled": manual_check(run),
+            "not_run": not_run}
 
 
-PRICE_IN, PRICE_OUT = 0.75, 3.75   # USD / 1M tokens, gemini-3.8-flash paid tier (ai.google.dev/pricing, to 2026-12-31)
+def manual_check(run: Path) -> dict:
+    """Unlabelled reports vs eval/manual_checks.json: values only, reported separately from the gold score."""
+    checks = json.loads((ROOT / "eval" / "manual_checks.json").read_text(encoding="utf-8"))
+    out = {}
+    for stem, values in checks.items():
+        path = run / f"{stem}.json"
+        if stem.startswith("_") or not path.exists():
+            continue
+        preds = json.loads(path.read_text(encoding="utf-8"))["tests"]
+        golds = [{"test_name": n, "value": v} for n, v in values.items()]
+        pairs = match(preds, golds)
+        wrong = [f"{golds[j]['test_name']}: {preds[i].get('value')} (read {golds[j]['value']})"
+                 for i, j in pairs if not value_eq(preds[i].get("value"), golds[j]["value"])]
+        out[stem] = {"rows": len(golds), "pred": len(preds), "value_ok": len(pairs) - len(wrong), "wrong": wrong}
+    return out
+
+
+# USD / 1M tokens (input, output incl. thinking), paid standard tier, ai.google.dev/gemini-api/docs/pricing,
+# read 2026-10-26. 3.8/3.6 flash rates double on 2027-01-01.
+PRICES = {"gemini-3.8-flash": (0.75, 3.75), "gemini-3.6-flash": (0.75, 3.75),
+          "gemini-3.5-flash-lite": (0.30, 2.50), "gemini-3.1-flash-lite": (0.25, 1.50)}
 
 
 def cost_latency(run: Path) -> dict:
@@ -210,13 +233,15 @@ def cost_latency(run: Path) -> dict:
     meta_path = run / "meta.json"
     if not meta_path.exists():
         return {}
-    records = [r for r in json.loads(meta_path.read_text())["reports"].values() if "latency_s" in r]
+    meta = json.loads(meta_path.read_text())
+    price_in, price_out = PRICES[meta["model"]]
+    records = [r for r in meta["reports"].values() if "latency_s" in r]
     lat = sorted(r["latency_s"] for r in records)
     tin = [sum(u.get("promptTokenCount", 0) for u in r["usage"]) for r in records]
     tout = [sum(u.get("candidatesTokenCount", 0) + u.get("thoughtsTokenCount", 0) for u in r["usage"]) for r in records]
-    cost = [(i * PRICE_IN + o * PRICE_OUT) / 1e6 for i, o in zip(tin, tout)]
-    return {"reports_ok": len(records), "failed_attempts": sum(len(r["errors"]) for r in
-                                                               json.loads(meta_path.read_text())["reports"].values()),
+    cost = [(i * price_in + o * price_out) / 1e6 for i, o in zip(tin, tout)]
+    return {"model": meta["model"], "reports_ok": len(records),
+            "failed_attempts": sum(len(r["errors"]) for r in meta["reports"].values()),
             "latency_p50_s": lat[len(lat) // 2], "latency_max_s": lat[-1],
             "tokens_in_mean": round(sum(tin) / len(tin)), "tokens_out_mean": round(sum(tout) / len(tout)),
             "usd_per_report": round(sum(cost) / len(cost), 5)}
@@ -244,7 +269,7 @@ def main():
         res["cost_latency"] = cost_latency(run)
         (run / f"score{'_' + mode if mode else ''}.json").write_text(json.dumps(res, indent=2, ensure_ascii=False),
                                                                     encoding="utf-8")
-    ccols = ["reports_ok", "failed_attempts", "latency_p50_s", "latency_max_s", "tokens_in_mean", "tokens_out_mean",
+    ccols = ["model", "reports_ok", "failed_attempts", "latency_p50_s", "latency_max_s", "tokens_in_mean", "tokens_out_mean",
              "usd_per_report"]
     print("\n| run | " + " | ".join(ccols) + " |\n|" + "---|" * (len(ccols) + 1))
     for run, res in results.items():
@@ -254,7 +279,11 @@ def main():
         for stem, s in res["per_report"].items():
             print(f"  {stem}: {s['value_acc']:.2f} / {s['wrong_values']} / {s['missing_rows']} / {s['extra_rows']}"
                   f" / {s['fabricated_ranges']}{'  FAILED' if s['failed'] else ''}")
-        print(f"  unlabelled row counts: {res['unlabelled_row_counts']}")
+        for stem, m in res["unlabelled"].items():
+            print(f"  {stem} (manual check, not gold): {m['value_ok']}/{m['rows']} values ok, {m['pred']} rows"
+                  f"{' WRONG: ' + '; '.join(m['wrong']) if m['wrong'] else ''}")
+        if res["not_run"]:
+            print(f"  NOT RUN (excluded from totals): {res['not_run']}")
         if show_errors:
             for stem, errs in res["errors"].items():
                 for e in errs:

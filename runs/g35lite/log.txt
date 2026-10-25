@@ -1,0 +1,16 @@
+report_01 3.53 14 
+report_02 4.52 16 
+report_03 3.04 8 
+report_04 3.21 9 
+report_05 15.73 14 
+report_06 17.68 12 
+report_07 14.29 10 
+report_11 8.93 54 
+report_01 2.88 14 
+report_02 3.04 16 
+report_03 2.07 8 
+report_04 2.42 9 
+report_05 2.7 14 
+report_06 3.23 12 
+report_07 2.81 10 
+report_11 8.02 54 

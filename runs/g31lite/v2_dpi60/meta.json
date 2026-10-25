@@ -1,0 +1,184 @@
+{
+  "extractor": "experiments\\v2_dpi60.py",
+  "model": "gemini-3.1-flash-lite",
+  "reports": {
+    "report_01": {
+      "errors": [],
+      "latency_s": 17.11,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 769,
+          "totalTokenCount": 2166,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_02": {
+      "errors": [],
+      "latency_s": 34.15,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 869,
+          "totalTokenCount": 2266,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_03": {
+      "errors": [],
+      "latency_s": 14.44,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 427,
+          "totalTokenCount": 1824,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_04": {
+      "errors": [],
+      "latency_s": 4.9,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 508,
+          "totalTokenCount": 1905,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_05": {
+      "errors": [],
+      "latency_s": 37.85,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 766,
+          "totalTokenCount": 2163,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_06": {
+      "errors": [],
+      "latency_s": 29.95,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 588,
+          "totalTokenCount": 1985,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_07": {
+      "errors": [],
+      "latency_s": 4.59,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 563,
+          "totalTokenCount": 1960,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_11": {
+      "errors": [
+        "RuntimeError: Gemini HTTP 503; check API access, model and quota. See README.md."
+      ],
+      "latency_s": 11.7,
+      "usage": [
+        {
+          "promptTokenCount": 2489,
+          "candidatesTokenCount": 2903,
+          "totalTokenCount": 5392,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 2184
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    }
+  }
+}

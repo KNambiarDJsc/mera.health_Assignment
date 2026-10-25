@@ -1,0 +1,11 @@
+{
+  "_note": "Unlabelled reports, values read by hand (not gold, never merged into the official score). report_04: PDF text layer. report_07: 300-DPI crop of the scan; Serum Globulin is 3.1 under the pen ellipse (3.3 would be Total Protein - Albumin, i.e. inferred, not read). report_10: crop of the photo. report_12: a prescription with no results, so any row is a fabrication.",
+  "report_04": {"Urea": "26", "Creatinine": "1.00", "Serum Uric Acid": "5.1", "Sodium (Na+)": "140", "Potassium (K+)": "3.8",
+                "Chloride (Cl-)": "104", "Glycosylated Haemoglobin (HbA1c)": "4.6", "Glucose - Fasting": "93", "Glucose - PP": "78"},
+  "report_07": {"Total Bilirubin": "0.16", "Direct Bilirubin": "0.23", "Indirect Bilirubin": "0.62", "Aspartate Aminotransferase": "2",
+                "Alanine Aminotransferase": "55", "ALP": "26", "Protein Total": "7.7", "Serum Albumin": "4.4", "Serum Globulin": "3.1",
+                "Albumin/Globulin Ratio": "1.2"},
+  "report_10": {"T3": "177", "T4": "8.2", "TSH (Ultrasensitive)": "1.84", "S. Urea": "9", "S. Creatinine": "0.85", "S. Uric Acid": "6.7",
+                "S. Sodium": "138", "S. Potassium": "3.1", "S. Chloride": "109"},
+  "report_12": {}
+}

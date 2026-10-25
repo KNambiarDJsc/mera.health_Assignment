@@ -1,0 +1,186 @@
+{
+  "extractor": "extract.py",
+  "model": "gemini-3.1-flash-lite",
+  "reports": {
+    "report_01": {
+      "errors": [
+        "RuntimeError: Gemini HTTP 503; check API access, model and quota. See README.md."
+      ],
+      "latency_s": 117.83,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 769,
+          "totalTokenCount": 2166,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_02": {
+      "errors": [],
+      "latency_s": 46.15,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 869,
+          "totalTokenCount": 2266,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_03": {
+      "errors": [
+        "RuntimeError: Gemini HTTP 503; check API access, model and quota. See README.md."
+      ],
+      "latency_s": 43.01,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 427,
+          "totalTokenCount": 1824,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_04": {
+      "errors": [],
+      "latency_s": 4.36,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 508,
+          "totalTokenCount": 1905,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_05": {
+      "errors": [],
+      "latency_s": 26.27,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 766,
+          "totalTokenCount": 2163,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_06": {
+      "errors": [],
+      "latency_s": 59.69,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 588,
+          "totalTokenCount": 1985,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_07": {
+      "errors": [],
+      "latency_s": 29.19,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 563,
+          "totalTokenCount": 1960,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_11": {
+      "errors": [],
+      "latency_s": 26.9,
+      "usage": [
+        {
+          "promptTokenCount": 2489,
+          "candidatesTokenCount": 2903,
+          "totalTokenCount": 5392,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 2184
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    }
+  }
+}

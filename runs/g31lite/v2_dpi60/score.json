@@ -1,0 +1,179 @@
+{
+  "overall": {
+    "rows_gold": 118,
+    "rows_pred": 118,
+    "recall": 1.0,
+    "precision": 1.0,
+    "value_acc": 0.9915254237288136,
+    "row_acc": 0.9915254237288136,
+    "wrong_values": 1,
+    "decimal_errors": 0,
+    "null_values": 0,
+    "missing_rows": 0,
+    "extra_rows": 0,
+    "unit_acc_matched": 1.0,
+    "range_acc_matched": 1.0,
+    "fabricated_ranges": 0
+  },
+  "per_report": {
+    "report_01": {
+      "rows_gold": 14,
+      "rows_pred": 14,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 0.9285714285714286,
+      "row_acc": 0.9285714285714286,
+      "wrong_values": 1,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_02": {
+      "rows_gold": 16,
+      "rows_pred": 16,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_03": {
+      "rows_gold": 8,
+      "rows_pred": 8,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_05": {
+      "rows_gold": 14,
+      "rows_pred": 14,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_06": {
+      "rows_gold": 12,
+      "rows_pred": 12,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_11": {
+      "rows_gold": 54,
+      "rows_pred": 54,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    }
+  },
+  "errors": {
+    "report_01": [
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Platelet Count",
+          "value": "304000",
+          "unit": "/cumm",
+          "reference_range": "150000 - 410000"
+        },
+        "pred": {
+          "test_name": "Platelet Count",
+          "value": "340000",
+          "unit": "/cumm",
+          "reference_range": "150000 - 410000"
+        },
+        "bad": [
+          "value"
+        ]
+      }
+    ],
+    "report_02": [],
+    "report_03": [],
+    "report_05": [],
+    "report_06": [],
+    "report_11": []
+  },
+  "unlabelled": {
+    "report_04": {
+      "rows": 9,
+      "pred": 9,
+      "value_ok": 9,
+      "wrong": []
+    },
+    "report_07": {
+      "rows": 10,
+      "pred": 10,
+      "value_ok": 9,
+      "wrong": [
+        "Serum Globulin: 3.3 (read 3.1)"
+      ]
+    }
+  },
+  "not_run": [
+    "report_08",
+    "report_09"
+  ],
+  "cost_latency": {
+    "model": "gemini-3.1-flash-lite",
+    "reports_ok": 8,
+    "failed_attempts": 1,
+    "latency_p50_s": 17.11,
+    "latency_max_s": 37.85,
+    "tokens_in_mean": 1534,
+    "tokens_out_mean": 924,
+    "usd_per_report": 0.00177
+  }
+}
