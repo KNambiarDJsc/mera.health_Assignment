@@ -953,13 +953,37 @@
       }
     ]
   },
-  "unlabelled_row_counts": {
-    "report_04": 9,
-    "report_07": 10,
-    "report_10": 9,
-    "report_12": 0
+  "unlabelled": {
+    "report_04": {
+      "rows": 9,
+      "pred": 9,
+      "value_ok": 7,
+      "wrong": []
+    },
+    "report_07": {
+      "rows": 10,
+      "pred": 10,
+      "value_ok": 8,
+      "wrong": [
+        "Serum Globulin: 3.3 (read 3.1)"
+      ]
+    },
+    "report_10": {
+      "rows": 9,
+      "pred": 9,
+      "value_ok": 3,
+      "wrong": []
+    },
+    "report_12": {
+      "rows": 0,
+      "pred": 0,
+      "value_ok": 0,
+      "wrong": []
+    }
   },
+  "not_run": [],
   "cost_latency": {
+    "model": "gemini-3.6-flash",
     "reports_ok": 12,
     "failed_attempts": 0,
     "latency_p50_s": 13.0,
