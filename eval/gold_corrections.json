@@ -1,0 +1,10 @@
+[
+  {
+    "report": "report_01",
+    "test_name": "Platelet Count",
+    "field": "value",
+    "official": "304000",
+    "corrected": "340000",
+    "evidence": "PDF text layer and rendered page both print 340000 (pdftotext -layout: 'Platelet Count  340000  /cumm  150000 - 410000'). Digit transposition in the label."
+  }
+]
