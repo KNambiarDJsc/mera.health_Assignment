@@ -1,0 +1,22 @@
+{
+  "tests": [
+    {
+      "test_name": "S. Sodium",
+      "value": "138",
+      "unit": "mmol/L",
+      "reference_range": "136 - 146"
+    },
+    {
+      "test_name": "S. Potassium",
+      "value": "3.1",
+      "unit": "mmol/L",
+      "reference_range": "3.5 - 5.1"
+    },
+    {
+      "test_name": "S. Chloride",
+      "value": "109",
+      "unit": "mmol/L",
+      "reference_range": "98 - 107"
+    }
+  ]
+}

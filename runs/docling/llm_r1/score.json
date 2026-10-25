@@ -1,0 +1,338 @@
+{
+  "overall": {
+    "rows_gold": 138,
+    "rows_pred": 138,
+    "recall": 1.0,
+    "precision": 1.0,
+    "value_acc": 0.9927536231884058,
+    "row_acc": 0.9492753623188406,
+    "wrong_values": 1,
+    "decimal_errors": 0,
+    "null_values": 0,
+    "missing_rows": 0,
+    "extra_rows": 0,
+    "unit_acc_matched": 0.9782608695652174,
+    "range_acc_matched": 0.9565217391304348,
+    "fabricated_ranges": 0
+  },
+  "per_report": {
+    "report_01": {
+      "rows_gold": 14,
+      "rows_pred": 14,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 0.9285714285714286,
+      "row_acc": 0.9285714285714286,
+      "wrong_values": 1,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_02": {
+      "rows_gold": 16,
+      "rows_pred": 16,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_03": {
+      "rows_gold": 8,
+      "rows_pred": 8,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_05": {
+      "rows_gold": 14,
+      "rows_pred": 14,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_06": {
+      "rows_gold": 12,
+      "rows_pred": 12,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_08": {
+      "rows_gold": 6,
+      "rows_pred": 6,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 0.8333333333333334,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 0.8333333333333334,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_09": {
+      "rows_gold": 14,
+      "rows_pred": 14,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 0.6428571428571429,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 0.7857142857142857,
+      "range_acc_matched": 0.6428571428571429,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_11": {
+      "rows_gold": 54,
+      "rows_pred": 54,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    }
+  },
+  "errors": {
+    "report_01": [
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Platelet Count",
+          "value": "304000",
+          "unit": "/cumm",
+          "reference_range": "150000 - 410000"
+        },
+        "pred": {
+          "test_name": "Platelet Count",
+          "value": "340000",
+          "unit": "/cumm",
+          "reference_range": "150000 - 410000"
+        },
+        "bad": [
+          "value"
+        ]
+      }
+    ],
+    "report_02": [],
+    "report_03": [],
+    "report_05": [],
+    "report_06": [],
+    "report_08": [
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "VLDL",
+          "value": "23",
+          "unit": "mg/dL",
+          "reference_range": "< 30"
+        },
+        "pred": {
+          "test_name": "VLDL",
+          "value": "23",
+          "unit": "mg/dL",
+          "reference_range": null
+        },
+        "bad": [
+          "range"
+        ]
+      }
+    ],
+    "report_09": [
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Basophils",
+          "value": "2",
+          "unit": "%",
+          "reference_range": "0 - 2"
+        },
+        "pred": {
+          "test_name": "Basophils",
+          "value": "2",
+          "unit": null,
+          "reference_range": "2 - 10"
+        },
+        "bad": [
+          "unit",
+          "range"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Monocytes",
+          "value": "4",
+          "unit": "%",
+          "reference_range": "2 - 10"
+        },
+        "pred": {
+          "test_name": "Monocytes",
+          "value": "4",
+          "unit": null,
+          "reference_range": "1 - 6"
+        },
+        "bad": [
+          "unit",
+          "range"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Eosinophils",
+          "value": "5",
+          "unit": "%",
+          "reference_range": "1 - 6"
+        },
+        "pred": {
+          "test_name": "Eosinophils",
+          "value": "5",
+          "unit": "%",
+          "reference_range": "20 - 40"
+        },
+        "bad": [
+          "range"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Lymphocytes",
+          "value": "35",
+          "unit": "%",
+          "reference_range": "20 - 40"
+        },
+        "pred": {
+          "test_name": "Lymphocytes",
+          "value": "35",
+          "unit": "%",
+          "reference_range": "40 - 80"
+        },
+        "bad": [
+          "range"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Neutrophils",
+          "value": "52",
+          "unit": "%",
+          "reference_range": "40 - 80"
+        },
+        "pred": {
+          "test_name": "Neutrophils",
+          "value": "52",
+          "unit": null,
+          "reference_range": null
+        },
+        "bad": [
+          "unit",
+          "range"
+        ]
+      }
+    ],
+    "report_11": []
+  },
+  "unlabelled": {
+    "report_04": {
+      "rows": 9,
+      "pred": 9,
+      "value_ok": 9,
+      "wrong": []
+    },
+    "report_07": {
+      "rows": 10,
+      "pred": 9,
+      "value_ok": 6,
+      "wrong": [
+        "Serum Albumin: 4.4 g/dL (read 4.4)",
+        "Serum Globulin: TL 3. (read 3.1)"
+      ]
+    },
+    "report_10": {
+      "rows": 9,
+      "pred": 9,
+      "value_ok": 9,
+      "wrong": []
+    },
+    "report_12": {
+      "rows": 0,
+      "pred": 0,
+      "value_ok": 0,
+      "wrong": []
+    }
+  },
+  "not_run": [],
+  "cost_latency": {
+    "model": "gemini-3.5-flash-lite",
+    "reports_ok": 12,
+    "failed_attempts": 0,
+    "latency_p50_s": 39.02,
+    "latency_max_s": 61.49,
+    "tokens_in_mean": 953,
+    "tokens_out_mean": 844,
+    "usd_per_report": 0.0024
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "extractor": "experiments\\docling_rules.py",
+  "model": "docling-rules (no LLM)",
+  "reports": {
+    "report_01": {
+      "errors": [],
+      "latency_s": 40.79,
+      "usage": []
+    },
+    "report_02": {
+      "errors": [],
+      "latency_s": 19.8,
+      "usage": []
+    },
+    "report_03": {
+      "errors": [],
+      "latency_s": 10.85,
+      "usage": []
+    },
+    "report_04": {
+      "errors": [],
+      "latency_s": 12.15,
+      "usage": []
+    },
+    "report_05": {
+      "errors": [],
+      "latency_s": 44.25,
+      "usage": []
+    },
+    "report_06": {
+      "errors": [],
+      "latency_s": 31.92,
+      "usage": []
+    },
+    "report_07": {
+      "errors": [],
+      "latency_s": 32.41,
+      "usage": []
+    },
+    "report_08": {
+      "errors": [],
+      "latency_s": 35.25,
+      "usage": []
+    },
+    "report_09": {
+      "errors": [],
+      "latency_s": 45.29,
+      "usage": []
+    },
+    "report_10": {
+      "errors": [],
+      "latency_s": 27.09,
+      "usage": []
+    },
+    "report_11": {
+      "errors": [],
+      "latency_s": 45.1,
+      "usage": []
+    },
+    "report_12": {
+      "errors": [],
+      "latency_s": 9.84,
+      "usage": []
+    }
+  }
+}
