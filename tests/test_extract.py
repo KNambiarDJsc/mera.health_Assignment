@@ -1,4 +1,5 @@
 """Contract tests for extract.py. No network: the model call is faked."""
+import base64
 import io
 import json
 import subprocess
@@ -33,6 +34,7 @@ def test_output_is_schema_valid_and_keeps_strings(monkeypatch):
             {"test_name": "Platelets", "value": "2,29,000", "unit": "/cumm", "reference_range": "1,50,000 - 4,10,000"},
             {"test_name": "CRP", "value": "< 0.5", "unit": "mg/L", "reference_range": "< 5.0"},
             {"test_name": "T3", "value": "179", "unit": "ng/dL", "reference_range": None}]
+    rows = [r | {"legibility": "clear"} for r in rows]
     monkeypatch.setattr(extract, "call_model", lambda parts: gemini_response(rows))
     out = extract.extract(ROOT / "reports" / "report_08.jpg")
     jsonschema.validate(out, SCHEMA)
@@ -42,7 +44,7 @@ def test_output_is_schema_valid_and_keeps_strings(monkeypatch):
 def test_empty_strings_become_null_and_nameless_rows_dropped():
     rows = extract.clean([{"test_name": " Urea ", "value": " 26 ", "unit": "", "reference_range": "  "},
                           {"test_name": "", "value": "5"}])
-    assert rows == [{"test_name": "Urea", "value": "26", "unit": None, "reference_range": None}]
+    assert rows == [{"test_name": "Urea", "value": "26", "unit": None, "reference_range": None, "legibility": None}]
 
 
 def test_no_results_document_is_empty_not_error(monkeypatch):
@@ -58,15 +60,16 @@ def test_truncated_or_malformed_output_raises(result):
         extract.parse(result)
 
 
-def test_all_pdf_pages_are_sent():
-    assert len(extract.load_parts(ROOT / "reports" / "report_11.pdf")) == 2
-    assert len(extract.load_parts(ROOT / "reports" / "report_01.pdf")) == 1
-
-
-def test_native_pdf_mode_sends_the_pdf(monkeypatch):
-    monkeypatch.setattr(extract, "PDF_MODE", "native")
-    [part] = extract.load_parts(ROOT / "reports" / "report_11.pdf")
+def test_whole_pdf_is_sent_natively():
+    pdf = ROOT / "reports" / "report_11.pdf"                     # 2 pages: both must reach the model
+    [part] = extract.load_parts(pdf)
     assert part["inlineData"]["mimeType"] == "application/pdf"
+    assert base64.b64decode(part["inlineData"]["data"]) == pdf.read_bytes()
+
+
+def test_images_sent_with_their_media_type():
+    [part] = extract.load_parts(ROOT / "reports" / "report_08.jpg")
+    assert part["inlineData"]["mimeType"] == "image/jpeg"
 
 
 def test_unsupported_and_missing_files_raise(tmp_path):

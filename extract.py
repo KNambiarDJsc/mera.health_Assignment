@@ -9,17 +9,13 @@ a failed call never prints an empty-but-valid result.
 import base64
 import json
 import os
-import subprocess
 import sys
-import tempfile
 import time
 import urllib.error
 import urllib.request
 from pathlib import Path
 
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")
-PDF_MODE = os.environ.get("EXTRACT_PDF_MODE", "image")   # "image": render pages; "native": send the PDF
-DPI = 200            # Gemini bills an image at a fixed token count, so resolution is free; 60 DPI lost digits
 
 PROMPT = """You are transcribing a medical lab report into structured data. The output becomes the patient's record, so copy exactly what is printed. Never correct, standardise or fill in anything.
 
@@ -29,44 +25,36 @@ Return one entry per printed result row, in printed order, across every page.
 - value: the result exactly as printed, as a string, with its qualifiers and formatting: "< 0.5", "2-3", "Negative", "Present (+)", "2,29,000". Do not round, convert or recompute.
 - unit: the unit printed for that row. If it is printed inside the result cell ("179 ng/dL") or the range cell ("0 - 5 /hpf"), put it here instead. null if none is printed.
 - reference_range: the range exactly as printed for that row, without the unit. null if that row has no printed range. Never supply a range from your own knowledge.
+- legibility: "obscured" if anything (pen marks, stains, folds, glare, blur) overlaps or degrades that row's printed value, else "clear".
 
 Include only rows that report a result for this patient. Skip section headings, column headers, methods, comments, signatures, patient details and handwritten notes. Tables may sit side by side: read each table across its own columns.
 If the document contains no lab results (for example a prescription or a list of tests advised), return an empty list.
 If a value cannot be read with confidence, use null rather than guessing."""
 
 NULLABLE = {"type": "STRING", "nullable": True}
+FIELDS = ["test_name", "value", "unit", "reference_range", "legibility"]
 RESPONSE_SCHEMA = {
     "type": "OBJECT", "required": ["tests"],
     "properties": {"tests": {"type": "ARRAY", "items": {
-        "type": "OBJECT", "required": ["test_name", "value", "unit", "reference_range"],
-        "propertyOrdering": ["test_name", "value", "unit", "reference_range"],
+        "type": "OBJECT", "required": FIELDS, "propertyOrdering": FIELDS,
         "properties": {"test_name": {"type": "STRING"}, "value": NULLABLE, "unit": NULLABLE,
-                       "reference_range": NULLABLE},
+                       "reference_range": NULLABLE, "legibility": {"type": "STRING", "enum": ["clear", "obscured"]}},
     }}},
 }
 
-MEDIA_TYPES = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png"}
+MEDIA_TYPES = {".pdf": "application/pdf", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png"}
 
 
 def load_parts(path: Path) -> list[dict]:
-    """Every page of the report as Gemini inline-data parts."""
-    suffix = path.suffix.lower()
-    if suffix == ".pdf" and PDF_MODE == "native":
-        return [inline("application/pdf", path.read_bytes())]
-    if suffix == ".pdf":
-        with tempfile.TemporaryDirectory() as directory:
-            try:
-                subprocess.run(["pdftoppm", "-r", str(DPI), "-png", str(path), str(Path(directory) / "page")],
-                               check=True, capture_output=True)
-            except FileNotFoundError:
-                raise RuntimeError("Install Poppler (pdftoppm); see README.md.") from None
-            except subprocess.CalledProcessError as error:
-                raise RuntimeError(f"pdftoppm could not read {path}: {error.stderr.decode().strip()}") from None
-            pages = sorted(Path(directory).glob("page*.png"), key=lambda p: int(p.stem.split("-")[-1]))
-            return [inline("image/png", p.read_bytes()) for p in pages]
-    if suffix in MEDIA_TYPES:
-        return [inline(MEDIA_TYPES[suffix], path.read_bytes())]
-    raise RuntimeError(f"Unsupported file type {suffix!r}; expected .pdf, .jpg, .jpeg or .png.")
+    """The report as one Gemini inline-data part. PDFs go in natively: every page, plus the text layer
+    when there is one (same accuracy as rendered pages in our runs, ~3x faster, no Poppler)."""
+    media_type = MEDIA_TYPES.get(path.suffix.lower())
+    if media_type is None:
+        raise RuntimeError(f"Unsupported file type {path.suffix!r}; expected .pdf, .jpg, .jpeg or .png.")
+    data = path.read_bytes()
+    if media_type == "application/pdf" and not data.startswith(b"%PDF-"):
+        raise RuntimeError(f"{path} is not a PDF.")
+    return [inline(media_type, data)]
 
 
 def inline(media_type: str, data: bytes) -> dict:
@@ -117,9 +105,8 @@ def text_or_none(value):
 
 
 def clean(tests: list[dict]) -> list[dict]:
-    rows = [{"test_name": text_or_none(t.get("test_name")), "value": text_or_none(t.get("value")),
-             "unit": text_or_none(t.get("unit")), "reference_range": text_or_none(t.get("reference_range"))}
-            for t in tests]
+    """Strings kept verbatim; "legibility" is an extra field (schema allows it) so obscured rows can go to review."""
+    rows = [{field: text_or_none(t.get(field)) for field in FIELDS} for t in tests]
     return [r for r in rows if r["test_name"]]
 
 
