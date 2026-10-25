@@ -1,0 +1,282 @@
+{
+  "extractor": "experiments\\v0_baseline.py",
+  "model": "gemini-3.6-flash",
+  "reports": {
+    "report_01": {
+      "errors": [],
+      "latency_s": 12.84,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 668,
+          "totalTokenCount": 3083,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            }
+          ],
+          "thoughtsTokenCount": 1173,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_02": {
+      "errors": [],
+      "latency_s": 13.0,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 1003,
+          "totalTokenCount": 4257,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 2012,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_03": {
+      "errors": [],
+      "latency_s": 11.74,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 567,
+          "totalTokenCount": 3399,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 1590,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_04": {
+      "errors": [],
+      "latency_s": 9.49,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 577,
+          "totalTokenCount": 3157,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 1338,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_05": {
+      "errors": [],
+      "latency_s": 13.2,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 905,
+          "totalTokenCount": 4072,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 1925,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_06": {
+      "errors": [],
+      "latency_s": 10.46,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 466,
+          "totalTokenCount": 3017,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            }
+          ],
+          "thoughtsTokenCount": 1309,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_07": {
+      "errors": [],
+      "latency_s": 14.26,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 651,
+          "totalTokenCount": 3688,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 1795,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_08": {
+      "errors": [],
+      "latency_s": 20.64,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 371,
+          "totalTokenCount": 2589,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 976,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_09": {
+      "errors": [],
+      "latency_s": 14.52,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 903,
+          "totalTokenCount": 4137,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 1992,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_10": {
+      "errors": [],
+      "latency_s": 9.16,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 633,
+          "totalTokenCount": 3083,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            }
+          ],
+          "thoughtsTokenCount": 1208,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_11": {
+      "errors": [],
+      "latency_s": 13.71,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 1384,
+          "totalTokenCount": 4523,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 1897,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_12": {
+      "errors": [],
+      "latency_s": 5.99,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 10,
+          "totalTokenCount": 1731,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            }
+          ],
+          "thoughtsTokenCount": 479,
+          "serviceTier": "standard"
+        }
+      ]
+    }
+  }
+}

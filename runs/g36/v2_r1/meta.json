@@ -1,0 +1,103 @@
+{
+  "extractor": "extract.py",
+  "model": "gemini-3.6-flash",
+  "reports": {
+    "report_01": {
+      "errors": [],
+      "latency_s": 77.82,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 456,
+          "totalTokenCount": 2677,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 824,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_02": {
+      "errors": [],
+      "latency_s": 10.89,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 517,
+          "totalTokenCount": 3326,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 1412,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_03": {
+      "errors": [],
+      "latency_s": 10.05,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 427,
+          "totalTokenCount": 2525,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "thoughtsTokenCount": 701,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_04": {
+      "errors": [],
+      "latency_s": 7.32,
+      "usage": [
+        {
+          "promptTokenCount": 1397,
+          "candidatesTokenCount": 303,
+          "totalTokenCount": 2416,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 305
+            }
+          ],
+          "thoughtsTokenCount": 716,
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_05": {
+      "errors": [
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md."
+      ]
+    }
+  }
+}
