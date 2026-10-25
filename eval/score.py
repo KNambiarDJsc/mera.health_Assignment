@@ -225,7 +225,8 @@ def manual_check(run: Path) -> dict:
 # USD / 1M tokens (input, output incl. thinking), paid standard tier, ai.google.dev/gemini-api/docs/pricing,
 # read 2026-10-26. 3.8/3.6 flash rates double on 2027-01-01.
 PRICES = {"gemini-3.8-flash": (0.75, 3.75), "gemini-3.6-flash": (0.75, 3.75),
-          "gemini-3.5-flash-lite": (0.30, 2.50), "gemini-3.1-flash-lite": (0.25, 1.50)}
+          "gemini-3.5-flash-lite": (0.30, 2.50), "gemini-3.1-flash-lite": (0.25, 1.50),
+          "gemma-4-31b-it": (0.0, 0.0)}   # open weights; free on the API, self-hosting cost not estimated
 
 
 def cost_latency(run: Path) -> dict:
