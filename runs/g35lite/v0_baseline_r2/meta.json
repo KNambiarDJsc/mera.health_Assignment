@@ -1,0 +1,33 @@
+{
+  "extractor": "experiments\\v0_baseline.py",
+  "model": "gemini-3.5-flash-lite",
+  "reports": {
+    "report_01": {
+      "errors": [],
+      "latency_s": 3.22,
+      "usage": [
+        {
+          "promptTokenCount": 1242,
+          "candidatesTokenCount": 668,
+          "totalTokenCount": 1910,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 150
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_02": {
+      "errors": [
+        "RuntimeError: Gemini HTTP 429; check API access, model and quota. See README.md."
+      ]
+    }
+  }
+}

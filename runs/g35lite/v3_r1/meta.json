@@ -1,0 +1,270 @@
+{
+  "extractor": "extract.py",
+  "model": "gemini-3.5-flash-lite",
+  "reports": {
+    "report_01": {
+      "errors": [],
+      "latency_s": 2.82,
+      "usage": [
+        {
+          "promptTokenCount": 874,
+          "candidatesTokenCount": 895,
+          "totalTokenCount": 1769,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 532
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 342
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_02": {
+      "errors": [],
+      "latency_s": 2.92,
+      "usage": [
+        {
+          "promptTokenCount": 874,
+          "candidatesTokenCount": 1014,
+          "totalTokenCount": 1888,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 532
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 342
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_03": {
+      "errors": [],
+      "latency_s": 2.45,
+      "usage": [
+        {
+          "promptTokenCount": 874,
+          "candidatesTokenCount": 502,
+          "totalTokenCount": 1376,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 532
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 342
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_04": {
+      "errors": [],
+      "latency_s": 2.44,
+      "usage": [
+        {
+          "promptTokenCount": 874,
+          "candidatesTokenCount": 588,
+          "totalTokenCount": 1462,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 342
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 532
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_05": {
+      "errors": [],
+      "latency_s": 3.1,
+      "usage": [
+        {
+          "promptTokenCount": 874,
+          "candidatesTokenCount": 892,
+          "totalTokenCount": 1766,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 342
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 532
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_06": {
+      "errors": [],
+      "latency_s": 4.45,
+      "usage": [
+        {
+          "promptTokenCount": 874,
+          "candidatesTokenCount": 696,
+          "totalTokenCount": 1570,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 532
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 342
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_07": {
+      "errors": [],
+      "latency_s": 2.75,
+      "usage": [
+        {
+          "promptTokenCount": 874,
+          "candidatesTokenCount": 655,
+          "totalTokenCount": 1529,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 532
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 342
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_08": {
+      "errors": [],
+      "latency_s": 2.18,
+      "usage": [
+        {
+          "promptTokenCount": 1434,
+          "candidatesTokenCount": 363,
+          "totalTokenCount": 1797,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 342
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_09": {
+      "errors": [],
+      "latency_s": 2.9,
+      "usage": [
+        {
+          "promptTokenCount": 1434,
+          "candidatesTokenCount": 905,
+          "totalTokenCount": 2339,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 342
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_10": {
+      "errors": [],
+      "latency_s": 2.37,
+      "usage": [
+        {
+          "promptTokenCount": 1434,
+          "candidatesTokenCount": 442,
+          "totalTokenCount": 1876,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 342
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_11": {
+      "errors": [],
+      "latency_s": 7.05,
+      "usage": [
+        {
+          "promptTokenCount": 1406,
+          "candidatesTokenCount": 3389,
+          "totalTokenCount": 4795,
+          "promptTokensDetails": [
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1064
+            },
+            {
+              "modality": "TEXT",
+              "tokenCount": 342
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    },
+    "report_12": {
+      "errors": [],
+      "latency_s": 1.91,
+      "usage": [
+        {
+          "promptTokenCount": 1434,
+          "candidatesTokenCount": 9,
+          "totalTokenCount": 1443,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 342
+            },
+            {
+              "modality": "IMAGE",
+              "tokenCount": 1092
+            }
+          ],
+          "serviceTier": "standard"
+        }
+      ]
+    }
+  }
+}

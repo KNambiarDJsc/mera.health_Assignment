@@ -15,7 +15,8 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")
+# Same accuracy as larger models on all 12 samples, no thinking tokens, ~3s/report, ~1/3 of 3.8-flash's price.
+MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
 
 PROMPT = """You are transcribing a medical lab report into structured data. The output becomes the patient's record, so copy exactly what is printed. Never correct, standardise or fill in anything.
 
@@ -119,6 +120,7 @@ def extract(path: Path) -> dict:
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         sys.exit(__doc__)
+    sys.stdout.reconfigure(encoding="utf-8")   # units like "µg/dL": never the platform codepage
     try:
         print(json.dumps(extract(Path(sys.argv[1])), indent=2, ensure_ascii=False))
     except RuntimeError as error:

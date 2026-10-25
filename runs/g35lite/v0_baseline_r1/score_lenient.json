@@ -1,0 +1,840 @@
+{
+  "overall": {
+    "rows_gold": 138,
+    "rows_pred": 114,
+    "recall": 0.7463768115942029,
+    "precision": 0.9035087719298246,
+    "value_acc": 0.6811594202898551,
+    "row_acc": 0.6594202898550725,
+    "wrong_values": 4,
+    "decimal_errors": 0,
+    "null_values": 5,
+    "missing_rows": 35,
+    "extra_rows": 11,
+    "unit_acc_matched": 1.0,
+    "range_acc_matched": 0.970873786407767,
+    "fabricated_ranges": 3
+  },
+  "per_report": {
+    "report_01": {
+      "rows_gold": 14,
+      "rows_pred": 14,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 0.9285714285714286,
+      "row_acc": 0.9285714285714286,
+      "wrong_values": 1,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_02": {
+      "rows_gold": 16,
+      "rows_pred": 16,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_03": {
+      "rows_gold": 8,
+      "rows_pred": 8,
+      "recall": 0.5,
+      "precision": 0.5,
+      "value_acc": 0.5,
+      "row_acc": 0.125,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 4,
+      "extra_rows": 4,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 0.25,
+      "fabricated_ranges": 3,
+      "failed": false
+    },
+    "report_05": {
+      "rows_gold": 14,
+      "rows_pred": 14,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_06": {
+      "rows_gold": 12,
+      "rows_pred": 12,
+      "recall": 0.8333333333333334,
+      "precision": 0.8333333333333334,
+      "value_acc": 0.16666666666666666,
+      "row_acc": 0.16666666666666666,
+      "wrong_values": 3,
+      "decimal_errors": 0,
+      "null_values": 5,
+      "missing_rows": 2,
+      "extra_rows": 2,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_08": {
+      "rows_gold": 6,
+      "rows_pred": 6,
+      "recall": 0.16666666666666666,
+      "precision": 0.16666666666666666,
+      "value_acc": 0.16666666666666666,
+      "row_acc": 0.16666666666666666,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 5,
+      "extra_rows": 5,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_09": {
+      "rows_gold": 14,
+      "rows_pred": 14,
+      "recall": 1.0,
+      "precision": 1.0,
+      "value_acc": 1.0,
+      "row_acc": 1.0,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    },
+    "report_11": {
+      "rows_gold": 54,
+      "rows_pred": 30,
+      "recall": 0.5555555555555556,
+      "precision": 1.0,
+      "value_acc": 0.5555555555555556,
+      "row_acc": 0.5555555555555556,
+      "wrong_values": 0,
+      "decimal_errors": 0,
+      "null_values": 0,
+      "missing_rows": 24,
+      "extra_rows": 0,
+      "unit_acc_matched": 1.0,
+      "range_acc_matched": 1.0,
+      "fabricated_ranges": 0,
+      "failed": false
+    }
+  },
+  "errors": {
+    "report_01": [
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Platelet Count",
+          "value": "304000",
+          "unit": "/cumm",
+          "reference_range": "150000 - 410000"
+        },
+        "pred": {
+          "test_name": "Platelet Count",
+          "value": 340000.0,
+          "unit": "/cumm",
+          "reference_range": "150000 - 410000"
+        },
+        "bad": [
+          "value"
+        ]
+      }
+    ],
+    "report_02": [],
+    "report_03": [
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Glycated Hb",
+          "value": "6.0",
+          "unit": "%",
+          "reference_range": null
+        },
+        "pred": {
+          "test_name": "Glycated Hb",
+          "value": 6.0,
+          "unit": "%",
+          "reference_range": "< 5.7"
+        },
+        "bad": [
+          "range"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "T4",
+          "value": "10.9",
+          "unit": "µg/dL",
+          "reference_range": null
+        },
+        "pred": {
+          "test_name": "T4",
+          "value": 10.9,
+          "unit": "µg/dL",
+          "reference_range": "4.5 - 12.0"
+        },
+        "bad": [
+          "range"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "T3",
+          "value": "179",
+          "unit": "ng/dL",
+          "reference_range": null
+        },
+        "pred": {
+          "test_name": "T3",
+          "value": 179.0,
+          "unit": "ng/dL",
+          "reference_range": "80 - 200"
+        },
+        "bad": [
+          "range"
+        ]
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Vit D Total",
+          "value": "58.9",
+          "unit": "ng/mL",
+          "reference_range": "30.0 - 100.0"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Vit B12",
+          "value": "359",
+          "unit": "pg/mL",
+          "reference_range": "197 - 771"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "FBS",
+          "value": "88",
+          "unit": "mg/dL",
+          "reference_range": "70 - 100"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "PPBS",
+          "value": "95",
+          "unit": "mg/dL",
+          "reference_range": "70 - 140"
+        }
+      },
+      {
+        "kind": "extra",
+        "pred": {
+          "test_name": "Vitamin D Total",
+          "value": 58.9,
+          "unit": "ng/mL",
+          "reference_range": "30.0 - 100.0"
+        }
+      },
+      {
+        "kind": "extra",
+        "pred": {
+          "test_name": "Vitamin B12",
+          "value": 359.0,
+          "unit": "pg/mL",
+          "reference_range": "197 - 771"
+        }
+      },
+      {
+        "kind": "extra",
+        "pred": {
+          "test_name": "Fastings Blood Sugar",
+          "value": 88.0,
+          "unit": "mg/dL",
+          "reference_range": "70 - 100"
+        }
+      },
+      {
+        "kind": "extra",
+        "pred": {
+          "test_name": "Postprandial Blood Sugar",
+          "value": 95.0,
+          "unit": "mg/dL",
+          "reference_range": "70 - 140"
+        }
+      }
+    ],
+    "report_05": [],
+    "report_06": [
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Squamous Epithelial Cells",
+          "value": "1-2",
+          "unit": "/hpf",
+          "reference_range": "0 - 5"
+        },
+        "pred": {
+          "test_name": "Urine Squamous Epithelial Cells",
+          "value": 1.5,
+          "unit": "/hpf",
+          "reference_range": "0 - 5 /hpf"
+        },
+        "bad": [
+          "value"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Erythrocytes",
+          "value": "1-2",
+          "unit": "/hpf",
+          "reference_range": "Nil"
+        },
+        "pred": {
+          "test_name": "Urine Erythrocytes",
+          "value": 1.5,
+          "unit": "/hpf",
+          "reference_range": "Nil /hpf"
+        },
+        "bad": [
+          "value"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Leucocytes",
+          "value": "2-3",
+          "unit": "/hpf",
+          "reference_range": "0 - 5"
+        },
+        "pred": {
+          "test_name": "Urine Leucocytes",
+          "value": 2.5,
+          "unit": "/hpf",
+          "reference_range": "0 - 5 /hpf"
+        },
+        "bad": [
+          "value"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Ketones",
+          "value": "Negative",
+          "unit": null,
+          "reference_range": "Negative"
+        },
+        "pred": {
+          "test_name": "Urine Ketones",
+          "value": null,
+          "unit": null,
+          "reference_range": "Negative"
+        },
+        "bad": [
+          "value"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Sugar",
+          "value": "Present (+)",
+          "unit": null,
+          "reference_range": "Negative"
+        },
+        "pred": {
+          "test_name": "Urine Sugar",
+          "value": null,
+          "unit": null,
+          "reference_range": "Negative"
+        },
+        "bad": [
+          "value"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Albumin",
+          "value": "Negative",
+          "unit": null,
+          "reference_range": "Negative"
+        },
+        "pred": {
+          "test_name": "Urine Albumin",
+          "value": null,
+          "unit": null,
+          "reference_range": "Negative"
+        },
+        "bad": [
+          "value"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Clarity",
+          "value": "Clear",
+          "unit": null,
+          "reference_range": "Clear"
+        },
+        "pred": {
+          "test_name": "Urine Clarity",
+          "value": null,
+          "unit": null,
+          "reference_range": "Clear"
+        },
+        "bad": [
+          "value"
+        ]
+      },
+      {
+        "kind": "field",
+        "gold": {
+          "test_name": "Colour",
+          "value": "Dark Yellow",
+          "unit": null,
+          "reference_range": "Pale Yellow"
+        },
+        "pred": {
+          "test_name": "Urine Colour",
+          "value": null,
+          "unit": null,
+          "reference_range": "Pale Yellow"
+        },
+        "bad": [
+          "value"
+        ]
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "CRP",
+          "value": "< 0.5",
+          "unit": "mg/L",
+          "reference_range": "< 5.0"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "E.S.R. (Westergren)",
+          "value": "13",
+          "unit": "mm/hr",
+          "reference_range": "0 - 15"
+        }
+      },
+      {
+        "kind": "extra",
+        "pred": {
+          "test_name": "C-Reactive Protein",
+          "value": 0.5,
+          "unit": "mg/L",
+          "reference_range": "< 5.0 mg/L"
+        }
+      },
+      {
+        "kind": "extra",
+        "pred": {
+          "test_name": "Erythrocyte Sedimentation Rate",
+          "value": 13.0,
+          "unit": "mm/hr",
+          "reference_range": "0 - 15 mm/hr"
+        }
+      }
+    ],
+    "report_08": [
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "S. Cholesterol",
+          "value": "155",
+          "unit": "mg/dL",
+          "reference_range": "< 200"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "TG",
+          "value": "106",
+          "unit": "mg/dL",
+          "reference_range": "< 150"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "HDL-C",
+          "value": "60",
+          "unit": "mg/dL",
+          "reference_range": "> 40"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "LDL-C (Direct)",
+          "value": "73",
+          "unit": "mg/dL",
+          "reference_range": "< 100"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Chol/HDL",
+          "value": "4.3",
+          "unit": null,
+          "reference_range": "< 5.0"
+        }
+      },
+      {
+        "kind": "extra",
+        "pred": {
+          "test_name": "Total Cholesterol",
+          "value": 155.0,
+          "unit": "mg/dL",
+          "reference_range": "< 200 mg/dL"
+        }
+      },
+      {
+        "kind": "extra",
+        "pred": {
+          "test_name": "Triglycerides",
+          "value": 106.0,
+          "unit": "mg/dL",
+          "reference_range": "< 150 mg/dL"
+        }
+      },
+      {
+        "kind": "extra",
+        "pred": {
+          "test_name": "HDL Cholesterol",
+          "value": 60.0,
+          "unit": "mg/dL",
+          "reference_range": "> 40 mg/dL"
+        }
+      },
+      {
+        "kind": "extra",
+        "pred": {
+          "test_name": "LDL Cholesterol",
+          "value": 73.0,
+          "unit": "mg/dL",
+          "reference_range": "< 100 mg/dL"
+        }
+      },
+      {
+        "kind": "extra",
+        "pred": {
+          "test_name": "Cholesterol / HDL Ratio",
+          "value": 4.3,
+          "unit": null,
+          "reference_range": "< 5.0"
+        }
+      }
+    ],
+    "report_09": [],
+    "report_11": [
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Urea",
+          "value": "42",
+          "unit": "mg/dL",
+          "reference_range": "15 - 40"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Creatinine",
+          "value": "1.00",
+          "unit": "mg/dL",
+          "reference_range": "0.70 - 1.30"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Serum Uric Acid",
+          "value": "6.5",
+          "unit": "mg/dL",
+          "reference_range": "3.5 - 7.2"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Sodium (Na+)",
+          "value": "142",
+          "unit": "mmol/L",
+          "reference_range": "136 - 146"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Potassium (K+)",
+          "value": "3.9",
+          "unit": "mmol/L",
+          "reference_range": "3.5 - 5.1"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Chloride (Cl-)",
+          "value": "100",
+          "unit": "mmol/L",
+          "reference_range": "98 - 107"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Triiodothyronine (T3)",
+          "value": "186",
+          "unit": "ng/dL",
+          "reference_range": "80 - 200"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Thyroxine (T4)",
+          "value": "13.2",
+          "unit": "µg/dL",
+          "reference_range": "5.1 - 14.1"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Thyroid Stimulating Hormone",
+          "value": "1.45",
+          "unit": "µIU/mL",
+          "reference_range": "0.27 - 4.20"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Glycosylated Haemoglobin (HbA1c)",
+          "value": "3.6",
+          "unit": "%",
+          "reference_range": "< 5.7"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Glucose - Fasting",
+          "value": "94",
+          "unit": "mg/dL",
+          "reference_range": "70 - 100"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Glucose - PP",
+          "value": "80",
+          "unit": "mg/dL",
+          "reference_range": "70 - 140"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "25-Hydroxy Vitamin D",
+          "value": "118.8",
+          "unit": "ng/mL",
+          "reference_range": "30.0 - 100.0"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Cyanocobalamin (B12)",
+          "value": "498",
+          "unit": "pg/mL",
+          "reference_range": "197 - 771"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Color",
+          "value": "Pale Yellow",
+          "unit": null,
+          "reference_range": "Pale Yellow"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Appearance",
+          "value": "Clear",
+          "unit": null,
+          "reference_range": "Clear"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Reaction (pH)",
+          "value": "6.0",
+          "unit": null,
+          "reference_range": "5.0 - 8.0"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Sp. Gravity",
+          "value": "1.015",
+          "unit": null,
+          "reference_range": "1.005 - 1.030"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Urine Protein",
+          "value": "Negative",
+          "unit": null,
+          "reference_range": "Negative"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Urine Glucose",
+          "value": "Negative",
+          "unit": null,
+          "reference_range": "Negative"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Ketone Bodies",
+          "value": "Negative",
+          "unit": null,
+          "reference_range": "Negative"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Pus Cells (WBC)",
+          "value": "8-10",
+          "unit": "/hpf",
+          "reference_range": "0 - 5"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "RBC",
+          "value": "Nil",
+          "unit": "/hpf",
+          "reference_range": "Nil"
+        }
+      },
+      {
+        "kind": "missing",
+        "gold": {
+          "test_name": "Epithelial Cells",
+          "value": "3-4",
+          "unit": "/hpf",
+          "reference_range": "0 - 5"
+        }
+      }
+    ]
+  },
+  "unlabelled": {
+    "report_04": {
+      "rows": 9,
+      "pred": 9,
+      "value_ok": 9,
+      "wrong": []
+    },
+    "report_07": {
+      "rows": 10,
+      "pred": 10,
+      "value_ok": 8,
+      "wrong": [
+        "Serum Globulin: 3.3 (read 3.1)"
+      ]
+    },
+    "report_10": {
+      "rows": 9,
+      "pred": 9,
+      "value_ok": 3,
+      "wrong": []
+    },
+    "report_12": {
+      "rows": 0,
+      "pred": 0,
+      "value_ok": 0,
+      "wrong": []
+    }
+  },
+  "not_run": [],
+  "cost_latency": {
+    "model": "gemini-3.5-flash-lite",
+    "reports_ok": 12,
+    "failed_attempts": 0,
+    "latency_p50_s": 3.03,
+    "latency_max_s": 4.47,
+    "tokens_in_mean": 1242,
+    "tokens_out_mean": 658,
+    "usd_per_report": 0.00202
+  }
+}

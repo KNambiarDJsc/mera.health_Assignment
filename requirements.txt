@@ -1,1 +1,4 @@
-# No Python packages required. Python 3.10+ and Poppler (pdftoppm) are needed.
+# extract.py: no Python packages and no Poppler. Python 3.10+ and GEMINI_API_KEY only.
+# Tests (optional):
+pytest>=8
+jsonschema>=4
